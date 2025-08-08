@@ -121,42 +121,346 @@
     class VocabularyManager {
         constructor() {
             this.vocabulary = {
-                A1: {
-                    nouns: { 'pige': { en: 'girl', example: 'Pigen spiser et æble.' }, 'dreng': { en: 'boy', example: 'Drengen læser en bog.' }, 'hus': { et: 'house', example: 'Huset er stort.' }, 'bog': { en: 'book', example: 'Jeg har en bog.' }, 'æble': { et: 'apple', example: 'Æblet er rødt.' }, 'familie': { en: 'family', example: 'Min familie er glad.' }, 'ven': { en: 'friend', example: 'Han er en god ven.' }, 'skole': { en: 'school', example: 'Hun går i skole.' }, 'mad': { en: 'food', example: 'Maden er god.' }, 'vand': { et: 'water', example: 'Jeg drikker vand.' } },
-                    verbs: { 'spiser': { en: 'eat(s)', example: 'De spiser mad.' }, 'læser': { en: 'read(s)', example: 'Vi læser en bog.' }, 'ser': { en: 'see(s)', example: 'Jeg ser en bil.' }, 'har': { en: 'have/has', example: 'Hun har en stor bil.' }, 'er': { en: 'am/is/are', example: 'Vi er glade.' }, 'hedder': { en: 'am/is called', example: 'Jeg hedder Peter.' }, 'kommer': { en: 'come(s)', example: 'Han kommer fra Danmark.' }, 'bor': { en: 'live(s)', example: 'De bor i et hus.' } },
-                    adjectives: { 'stor': { en: 'big', example: 'Huset er stort.' }, 'lille': { en: 'small', example: 'Jeg ser en lille pige.' }, 'rød': { en: 'red', example: 'Æblet er rødt.' }, 'god': { en: 'good', example: 'Det er en god dag.' }, 'glad': { en: 'happy', example: 'Vi er glade.' } },
-                    other: { 'jeg': { en: 'I', example: 'Jeg er glad.' }, 'du': { en: 'you', example: 'Du spiser en kage.' }, 'han': { en: 'he', example: 'Han kommer fra København.' }, 'hun': { en: 'she', example: 'Hun er min ven.' }, 'vi': { en: 'we', example: 'Vi har en kat.' }, 'de': { en: 'they', example: 'De læser i bogen.' }, 'hvad': { en: 'what', example: 'Hvad spiser du?' }, 'hvor': { en: 'where', example: 'Hvor bor du?' }, 'og': { en: 'and', example: 'Han og hun er glade.' }, 'i': { en: 'in', example: 'Jeg bor i Danmark.' }, 'på': { en: 'on', example: 'Bogen ligger på bordet.' }, 'ikke': { en: 'not', example: 'Jeg er ikke glad.' } }
-                },
-                A2: {
-                    nouns: { 'bil': { en: 'car', example: 'Min bil er gammel.' }, 'arbejde': { et: 'work', example: 'Jeg har meget arbejde.' }, 'fritid': { en: 'leisure time', example: 'I min fritid læser jeg.' }, 'butik': { en: 'shop', example: 'Butikken er lukket.' }, 'penge': { en: 'money', example: 'Jeg har mange penge.' }, 'vejr': { et: 'weather', example: 'Vejret er koldt.' }, 'rejse': { en: 'journey', example: 'Vi tager på en rejse.' }, 'sprog': { et: 'language', example: 'Dansk er et sprog.' }, 'uge': { en: 'week', example: 'Ugen har syv dage.' } },
-                    verbs: { 'kører': { en: 'drive(s)', example: 'Han kører bil.' }, 'arbejder': { en: 'work(s)', example: 'Jeg arbejder på en butik.' }, 'besøger': { en: 'visit(s)', example: 'De besøger deres familie.' }, 'laver': { en: 'make(s)', example: 'Hun laver mad.' }, 'køber': { en: 'buy(s)', example: 'Jeg køber en ny bil.' }, 'synes': { en: 'think(s)/find(s)', example: 'Jeg synes det er smukt.' }, 'hjælper': { en: 'help(s)', example: 'Vi hjælper hinanden.' } },
-                    adjectives: { 'ny': { en: 'new', example: 'Vi har en ny bil.' }, 'gammel': { en: 'old', example: 'Bogen er gammel.' }, 'smuk': { en: 'beautiful', example: 'Det er en smuk dag.' }, 'billig': { en: 'cheap', example: 'Bilen er billig.' }, 'dyr': { en: 'expensive', example: 'Det er en dyr taske.' }, 'varm': { en: 'warm', example: 'Vejret er varmt.' }, 'kold': { en: 'cold', example: 'Vandet er koldt.' } },
-                    other: { 'fordi': { en: 'because', example: 'Jeg er glad, fordi jeg har ferie.' }, 'men': { en: 'but', example: 'Jeg er træt, men glad.' }, 'også': { en: 'also', example: 'Jeg taler også dansk.' }, 'måske': { en: 'maybe', example: 'Måske kommer han senere.' }, 'altid': { en: 'always', example: 'Han er altid glad.' }, 'aldrig': { en: 'never', example: 'Jeg spiser aldrig æbler.' }, 'nogle gange': { en: 'sometimes', example: 'Jeg løber nogle gange.' } }
-                },
-                B1: {
-                    nouns: { 'uddannelse': { en: 'education', example: 'Uddannelse er vigtig.' }, 'mulighed': { en: 'opportunity', example: 'Der er mange muligheder.' }, 'samfund': { et: 'society', example: 'Vi lever i et moderne samfund.' }, 'fremtid': { en: 'future', example: 'Fremtiden ser lys ud.' }, 'mening': { en: 'opinion', example: 'Hvad er din mening?' }, 'miljø': { et: 'environment', example: 'Vi skal beskytte miljøet.' }, 'sundhed': { en: 'health', example: 'Sundhed er vigtig for alle.' } },
-                    verbs: { 'studerer': { en: 'study/studies', example: 'Han studerer økonomi.' }, 'udvikler': { en: 'develop(s)', example: 'Teknologien udvikler sig hurtigt.' }, 'diskuterer': { en: 'discuss(es)', example: 'Vi diskuterer politik.' }, 'forklarer': { en: 'explain(s)', example: 'Læreren forklarer grammatik.' }, 'foreslår': { en: 'suggest(s)', example: 'Jeg foreslår en løsning.' }, 'beslutter': { en: 'decide(s)', example: 'Vi beslutter os for at rejse.' } },
-                    adjectives: { 'vigtig': { en: 'important', example: 'Det er en vigtig besked.' }, 'interessant': { en: 'interesting', example: 'Bogen er meget interessant.' }, 'nødvendig': { en: 'necessary', example: 'Det er nødvendigt at lære.' }, 'forskellig': { en: 'different', example: 'De har forskellige meninger.' }, 'politisk': { en: 'political', example: 'Det er en politisk diskussion.' }, 'social': { en: 'social', example: 'Hun har et stort socialt netværk.' } },
-                    other: { 'selvom': { en: 'although', example: 'Han smiler, selvom han er træt.' }, 'derfor': { en: 'therefore', example: 'Det regner, derfor bliver vi inde.' }, 'alligevel': { en: 'anyway', example: 'Det er dyrt, men jeg køber det alligevel.' }, 'desuden': { en: 'besides', example: 'Jeg er træt, desuden skal jeg tidligt op.' }, 'for eksempel': { en: 'for example', example: 'Vi spiser meget, for eksempel ost.' } }
-                },
-                B2: {
-                    nouns: { 'udfordring': { en: 'challenge', example: 'Det er en stor udfordring.' }, 'ansvar': { et: 'responsibility', example: 'Han tager sit ansvar alvorligt.' }, 'økonomi': { en: 'economy', example: 'Landets økonomi vokser.' }, 'kultur': { en: 'culture', example: 'Jeg studerer dansk kultur.' }, 'lovgivning': { en: 'legislation', example: 'Ny lovgivning er nødvendig.' }, 'forudsætning': { en: 'prerequisite', example: 'En god uddannelse er en forudsætning.' } },
-                    verbs: { 'analyserer': { en: 'analyze(s)', example: 'Vi analyserer data.' }, 'argumenterer': { en: 'argue(s)', example: 'Han argumenterer for sin mening.' }, 'bidrager': { en: 'contribute(s)', example: 'Hun bidrager til projektet.' }, 'overvejer': { en: 'consider(s)', example: 'Vi overvejer at flytte.' }, 'kritiserer': { en: 'criticize(s)', example: 'Man kritiserer regeringens politik.' }, 'konkluderer': { en: 'conclude(s)', example: 'Jeg konkluderer, at det er sandt.' } },
-                    adjectives: { 'kompleks': { en: 'complex', example: 'Problemet er meget komplekst.' }, 'bæredygtig': { en: 'sustainable', example: 'Vi skal tænke bæredygtigt.' }, 'global': { en: 'global', example: 'Vi står over for globale problemer.' }, 'relevant': { en: 'relevant', example: 'Det er en relevant diskussion.' }, 'effektiv': { en: 'effective', example: 'Løsningen er effektiv.' }, 'kontroversiel': { en: 'controversial', example: 'Emnet er kontroversielt.' } },
-                    other: { 'imidlertid': { en: 'however', example: 'Jeg var træt, imidlertid fortsatte jeg.' }, 'derimod': { en: 'on the other hand', example: 'Han er rolig, derimod er hun nervøs.' }, 'yderligere': { en: 'furthermore', example: 'Yderligere skal vi overveje prisen.' }, 'i modsætning til': { en: 'in contrast to', example: 'I modsætning til mig, er hun meget glad.' }, 'på grund af': { en: 'because of', example: 'Han kom for sent på grund af trafik.' } }
-                },
-                C1: {
-                    nouns: { 'bevidsthed': { en: 'consciousness', example: 'Vi har en kollektiv bevidsthed.' }, 'retfærdighed': { en: 'justice', example: 'Hun kæmper for retfærdighed.' }, 'velstand': { en: 'prosperity', example: 'Velstand er vigtig for alle.' }, 'arv': { en: 'heritage', example: 'Det er en del af vores kulturarv.' }, 'tendens': { en: 'tendency', example: 'Der er en tendens til at spare.' }, 'forhandling': { en: 'negotiation', example: 'Forhandlingerne var vanskelige.' } },
-                    verbs: { 'tilegne sig': { en: 'to acquire', example: 'Man tilegner sig viden.' }, 'formidle': { en: 'to convey/mediate', example: 'Han formidler et budskab.' }, 'nuancere': { en: 'to nuance', example: 'Det er vigtigt at nuancere debatten.' }, 'bestride': { en: 'to contest/dispute', example: 'Han bestrider anklagen.' }, 'anskue': { en: 'to view/perceive', example: 'Vi må anskue problemet fra flere sider.' } },
-                    adjectives: { 'tvetydig': { en: 'ambiguous', example: 'Svaret var tvetydigt.' }, 'banebrydende': { en: 'groundbreaking', example: 'Det er en banebrydende opdagelse.' }, 'omfattende': { en: 'comprehensive', example: 'Han har en omfattende viden.' }, 'uundgåelig': { en: 'unavoidable', example: 'Det var en uundgåelig konsekvens.' }, 'autentisk': { en: 'authentic', example: 'Hun virker meget autentisk.' } },
-                    other: { 'følgelig': { en: 'consequently', example: 'Jeg var syg, følgelig blev jeg hjemme.' }, 'udelukkende': { en: 'exclusively', example: 'Dette gælder udelukkende for studerende.' }, 'ganske vist': { en: 'admittedly', example: 'Ganske vist er det dyrt, men det er godt.' }, 'i den forbindelse': { en: 'in that connection', example: 'I den forbindelse er det vigtigt at nævne...' } }
-                },
-                C2: {
-                    nouns: { 'paradigmeskift': { et: 'paradigm shift', example: 'Et paradigmeskift ændrede videnskaben.' }, 'diskurs': { en: 'discourse', example: 'Den politiske diskurs er skarp.' }, 'suverænitet': { en: 'sovereignty', example: 'Danmark har fuld suverænitet.' }, 'metafysik': { en: 'metaphysics', example: 'Metafysik er et komplekst emne.' }, 'epistemologi': { en: 'epistemology', example: 'Epistemologi studerer viden.' } },
-                    verbs: { 'dekonstruere': { en: 'to deconstruct', example: 'Vi skal dekonstruere argumentet.' }, 'internalisere': { en: 'to internalize', example: 'Hun internaliserer kritikken.' }, 'legitimere': { en: 'to legitimize', example: 'De forsøger at legitimere deres handlinger.' }, 'udkrystallisere sig': { en: 'to crystallize', example: 'Problemet udkrystalliserede sig.' }, 'foregribe': { en: 'to anticipate', example: 'Man kan foregribe en krise.' } },
-                    adjectives: { 'iboende': { en: 'inherent', example: 'Der er en iboende risiko.' }, 'transcendent': { en: 'transcendent', example: 'Filosofien er transcendent.' }, 'allestedsnærværende': { en: 'ubiquitous', example: 'Internettet er allestedsnærværende.' }, 'inkongruent': { en: 'incongruent', example: 'Dine handlinger er inkongruente med dine ord.' }, 'prægnant': { en: 'concise/pithy', example: 'Han kom med et prægnant svar.' } },
-                    other: { 'som følge heraf': { en: 'as a result of this', example: 'Han tabte, som følge heraf var han ked af det.' }, 'ikke desto mindre': { en: 'nevertheless', example: 'Det var svært, ikke desto mindre lykkedes det.' }, 'i sagens natur': { en: 'by the nature of the case', example: 'I sagens natur er det en udfordring.' }, 'alt andet lige': { en: 'all other things being equal', example: 'Alt andet lige, vil prisen falde.' } }
-                }
+  nouns: {
+    'pige': { en: 'girl', example: 'Pigen spiser et æble.' },
+    'dreng': { en: 'boy', example: 'Drengen læser en bog.' },
+    'hus': { en: 'house', example: 'Huset er stort.' },
+    'bog': { en: 'book', example: 'Jeg har en bog.' },
+    'æble': { en: 'apple', example: 'Æblet er rødt.' },
+    'familie': { en: 'family', example: 'Min familie er glad.' },
+    'ven': { en: 'friend', example: 'Han er en god ven.' },
+    'skole': { en: 'school', example: 'Hun går i skole.' },
+    'mad': { en: 'food', example: 'Maden er god.' },
+    'vand': { en: 'water', example: 'Jeg drikker vand.' }
+  },
+  verbs: {
+    'spiser': { en: 'eat(s)', example: 'De spiser mad.' },
+    'læser': { en: 'read(s)', example: 'Vi læser en bog.' },
+    'ser': { en: 'see(s)', example: 'Jeg ser en bil.' },
+    'har': { en: 'have/has', example: 'Hun har en stor bil.' },
+    'er': { en: 'am/is/are', example: 'Vi er glade.' },
+    'hedder': { en: 'am/is called', example: 'Jeg hedder Peter.' },
+    'kommer': { en: 'come(s)', example: 'Han kommer fra Danmark.' },
+    'bor': { en: 'live(s)', example: 'De bor i et hus.' }
+  },
+  adjectives: {
+    'stor': { en: 'big', example: 'Huset er stort.' },
+    'lille': { en: 'small', example: 'Jeg ser en lille pige.' },
+    'rød': { en: 'red', example: 'Æblet er rødt.' },
+    'god': { en: 'good', example: 'Det er en god dag.' },
+    'glad': { en: 'happy', example: 'Vi er glade.' }
+  },
+  other: {
+    'jeg': { en: 'I', example: 'Jeg er glad.' },
+    'du': { en: 'you', example: 'Du spiser en kage.' },
+    'han': { en: 'he', example: 'Han kommer fra København.' },
+    'hun': { en: 'she', example: 'Hun er min ven.' },
+    'vi': { en: 'we', example: 'Vi har en kat.' },
+    'de': { en: 'they', example: 'De læser i bogen.' },
+    'hvad': { en: 'what', example: 'Hvad spiser du?' },
+    'hvor': { en: 'where', example: 'Hvor bor du?' },
+    'og': { en: 'and', example: 'Han og hun er glade.' },
+    'i': { en: 'in', example: 'Jeg bor i Danmark.' },
+    'på': { en: 'on', example: 'Bogen ligger på bordet.' },
+    'ikke': { en: 'not', example: 'Jeg er ikke glad.' }
+  },
+  A2: {
+    nouns: {
+        'bil': { en: 'car', example: 'Min bil er gammel.' },
+        'arbejde': { en: 'work', example: 'Jeg har meget arbejde.' },
+        'fritid': { en: 'leisure time', example: 'I min fritid læser jeg.' },
+        'butik': { en: 'shop', example: 'Butikken er lukket.' },
+        'penge': { en: 'money', example: 'Jeg har mange penge.' },
+        'vejr': { en: 'weather', example: 'Vejret er koldt.' },
+        'rejse': { en: 'journey', example: 'Vi tager på en rejse.' },
+        'sprog': { en: 'language', example: 'Dansk er et sprog.' },
+        'uge': { en: 'week', example: 'Ugen har syv dage.' }
+    },
+    verbs: {
+        'kører': { en: 'drive(s)', example: 'Han kører bil.' },
+        'arbejder': { en: 'work(s)', example: 'Jeg arbejder på en butik.' },
+        'besøger': { en: 'visit(s)', example: 'De besøger deres familie.' },
+        'laver': { en: 'make(s)', example: 'Hun laver mad.' },
+        'køber': { en: 'buy(s)', example: 'Jeg køber en ny bil.' },
+        'synes': { en: 'think(s)/find(s)', example: 'Jeg synes det er smukt.' },
+        'hjælper': { en: 'help(s)', example: 'Vi hjælper hinanden.' }
+    },
+    adjectives: {
+        'ny': { en: 'new', example: 'Vi har en ny bil.' },
+        'gammel': { en: 'old', example: 'Bogen er gammel.' },
+        'smuk': { en: 'beautiful', example: 'Det er en smuk dag.' },
+        'billig': { en: 'cheap', example: 'Bilen er billig.' },
+        'dyr': { en: 'expensive', example: 'Det er en dyr taske.' },
+        'varm': { en: 'warm', example: 'Vejret er varmt.' },
+        'kold': { en: 'cold', example: 'Vandet er koldt.' }
+    },
+    other: {
+        'fordi': { en: 'because', example: 'Jeg er glad, fordi jeg har ferie.' },
+        'men': { en: 'but', example: 'Jeg er træt, men glad.' },
+        'også': { en: 'also', example: 'Jeg taler også dansk.' },
+        'måske': { en: 'maybe', example: 'Måske kommer han senere.' },
+        'altid': { en: 'always', example: 'Han er altid glad.' },
+        'aldrig': { en: 'never', example: 'Jeg spiser aldrig æbler.' },
+        'nogle gange': { en: 'sometimes', example: 'Jeg løber nogle gange.' }
+    }
+}
+,
+B1: {
+    nouns: {
+        'uddannelse': { en: 'education', example: 'Uddannelse er vigtig.' },
+        'mulighed': { en: 'opportunity', example: 'Der er mange muligheder.' },
+        'samfund': { en: 'society', example: 'Vi lever i et moderne samfund.' },
+        'fremtid': { en: 'future', example: 'Fremtiden ser lys ud.' },
+        'mening': { en: 'opinion', example: 'Hvad er din mening?' },
+        'miljø': { en: 'environment', example: 'Vi skal beskytte miljøet.' },
+        'sundhed': { en: 'health', example: 'Sundhed er vigtig for alle.' }
+    },
+    verbs: {
+        'studerer': { en: 'study/studies', example: 'Han studerer økonomi.' },
+        'udvikler': { en: 'develop(s)', example: 'Teknologien udvikler sig hurtigt.' },
+        'diskuterer': { en: 'discuss(es)', example: 'Vi diskuterer politik.' },
+        'forklarer': { en: 'explain(s)', example: 'Læreren forklarer grammatik.' },
+        'foreslår': { en: 'suggest(s)', example: 'Jeg foreslår en løsning.' },
+        'beslutter': { en: 'decide(s)', example: 'Vi beslutter os for at rejse.' }
+    },
+    adjectives: {
+        'vigtig': { en: 'important', example: 'Det er en vigtig besked.' },
+        'interessant': { en: 'interesting', example: 'Bogen er meget interessant.' },
+        'nødvendig': { en: 'necessary', example: 'Det er nødvendigt at lære.' },
+        'forskellig': { en: 'different', example: 'De har forskellige meninger.' },
+        'politisk': { en: 'political', example: 'Det er en politisk diskussion.' },
+        'social': { en: 'social', example: 'Hun har et stort socialt netværk.' }
+    },
+    other: {
+        'selvom': { en: 'although', example: 'Han smiler, selvom han er træt.' },
+        'derfor': { en: 'therefore', example: 'Det regner, derfor bliver vi inde.' },
+        'alligevel': { en: 'anyway', example: 'Det er dyrt, men jeg køber det alligevel.' },
+        'desuden': { en: 'besides', example: 'Jeg er træt, desuden skal jeg tidligt op.' },
+        'for eksempel': { en: 'for example', example: 'Vi spiser meget, for eksempel ost.' }
+    }
+}
+,
+B2: {
+    nouns: {
+        'udfordring': { en: 'challenge', example: 'Det er en stor udfordring.' },
+        'ansvar': { en: 'responsibility', example: 'Han tager sit ansvar alvorligt.' },
+        'økonomi': { en: 'economy', example: 'Landets økonomi vokser.' },
+        'kultur': { en: 'culture', example: 'Jeg studerer dansk kultur.' },
+        'lovgivning': { en: 'legislation', example: 'Ny lovgivning er nødvendig.' },
+        'forudsætning': { en: 'prerequisite', example: 'En god uddannelse er en forudsætning.' },
+        // Extended list from your 50 essential words:
+        'samfund': { en: 'society', example: 'Vi lever i et moderne samfund.' },
+        'virksomhed': { en: 'company', example: 'Virksomheden vokser hurtigt.' },
+        'forhold': { en: 'relationship/condition', example: 'Der er gode forhold på arbejdspladsen.' },
+        'afdeling': { en: 'department', example: 'Jeg arbejder i en ny afdeling.' },
+        'udvikling': { en: 'development', example: 'Udviklingen går hurtigt.' },
+        'forskning': { en: 'research', example: 'Forskning er vigtig for fremskridt.' },
+        'uddannelse': { en: 'education', example: 'Uddannelse er nøglen til succes.' },
+        'beskæftigelse': { en: 'employment', example: 'Beskæftigelsen stiger.' },
+        'miljø': { en: 'environment', example: 'Vi skal beskytte miljøet.' },
+        'sundhed': { en: 'health', example: 'Sundhed er vigtig for alle.' },
+        'politik': { en: 'politics', example: 'Politik påvirker vores liv.' },
+        'teknologi': { en: 'technology', example: 'Teknologi ændrer samfundet.' },
+        'kommunikation': { en: 'communication', example: 'God kommunikation er vigtig.' },
+        'sprog': { en: 'language', example: 'Dansk er et smukt sprog.' },
+        'samarbejde': { en: 'cooperation', example: 'Samarbejde skaber resultater.' },
+        'løsning': { en: 'solution', example: 'Vi fandt en god løsning.' },
+        'mål': { en: 'goal', example: 'Mit mål er at blive flydende.' },
+        'resultat': { en: 'result', example: 'Resultatet var tilfredsstillende.' },
+        'beslutning': { en: 'decision', example: 'Beslutningen blev truffet i går.' },
+        'erfaring': { en: 'experience', example: 'Han har mange års erfaring.' },
+        'fremtid': { en: 'future', example: 'Fremtiden ser lys ud.' },
+        'fortid': { en: 'past', example: 'Fortiden påvirker nutiden.' },
+        'nutid': { en: 'present', example: 'Nutiden er vigtig.' },
+        'viden': { en: 'knowledge', example: 'Viden er magt.' },
+        'forståelse': { en: 'understanding', example: 'Vi har en god forståelse.' },
+        'information': { en: 'information', example: 'Informationen var klar.' },
+        'diskussion': { en: 'discussion', example: 'Diskussionen var intens.' },
+        'debat': { en: 'debate', example: 'Der var en livlig debat.' },
+        'argument': { en: 'argument', example: 'Han fremlagde et godt argument.' },
+        'perspektiv': { en: 'perspective', example: 'Et nyt perspektiv er vigtigt.' },
+        'indflydelse': { en: 'influence', example: 'Han har stor indflydelse.' },
+        'tolerance': { en: 'tolerance', example: 'Tolerance skaber fred.' },
+        'retfærdighed': { en: 'justice', example: 'Retfærdighed er vigtig i samfundet.' },
+        'frihed': { en: 'freedom', example: 'Frihed er en grundlæggende rettighed.' },
+        'lighed': { en: 'equality', example: 'Lighed er vigtig i demokratiet.' },
+        'rettighed': { en: 'right', example: 'Alle har rettigheder.' },
+        'pligt': { en: 'duty', example: 'Det er vores pligt at hjælpe.' },
+        'moral': { en: 'morality', example: 'Moral styrer vores handlinger.' },
+        'tro': { en: 'faith', example: 'Tro kan give håb.' },
+        'religion': { en: 'religion', example: 'Religion spiller en rolle i kulturen.' },
+        'tradition': { en: 'tradition', example: 'Traditioner binder os sammen.' },
+        'fest': { en: 'celebration', example: 'Vi holder en stor fest.' },
+        'kunst': { en: 'art', example: 'Kunst inspirerer mennesker.' },
+        'litteratur': { en: 'literature', example: 'Litteratur åbner sindet.' },
+        'musik': { en: 'music', example: 'Musik bringer glæde.' },
+        'film': { en: 'film', example: 'Vi så en god film.' }
+    },
+    verbs: {
+        'analyserer': { en: 'analyze(s)', example: 'Vi analyserer data.' },
+        'argumenterer': { en: 'argue(s)', example: 'Han argumenterer for sin mening.' },
+        'bidrager': { en: 'contribute(s)', example: 'Hun bidrager til projektet.' },
+        'overvejer': { en: 'consider(s)', example: 'Vi overvejer at flytte.' },
+        'kritiserer': { en: 'criticize(s)', example: 'Man kritiserer regeringens politik.' },
+        'konkluderer': { en: 'conclude(s)', example: 'Jeg konkluderer, at det er sandt.' }
+    },
+    adjectives: {
+        'kompleks': { en: 'complex', example: 'Problemet er meget komplekst.' },
+        'bæredygtig': { en: 'sustainable', example: 'Vi skal tænke bæredygtigt.' },
+        'global': { en: 'global', example: 'Vi står over for globale problemer.' },
+        'relevant': { en: 'relevant', example: 'Det er en relevant diskussion.' },
+        'effektiv': { en: 'effective', example: 'Løsningen er effektiv.' },
+        'kontroversiel': { en: 'controversial', example: 'Emnet er kontroversielt.' }
+    },
+    other: {
+        'imidlertid': { en: 'however', example: 'Jeg var træt, imidlertid fortsatte jeg.' },
+        'derimod': { en: 'on the other hand', example: 'Han er rolig, derimod er hun nervøs.' },
+        'yderligere': { en: 'furthermore', example: 'Yderligere skal vi overveje prisen.' },
+        'i modsætning til': { en: 'in contrast to', example: 'I modsætning til mig, er hun meget glad.' },
+        'på grund af': { en: 'because of', example: 'Han kom for sent på grund af trafik.' }
+    }
+}
+,
+C1 = {
+    nouns: {
+        'afgørelse': { en: 'decision', example: 'Efter mange diskussioner nåede vi endelig en afgørelse om projektets retning.' },
+        'behov': { en: 'need', example: 'Hun har et stort behov for anerkendelse.' },
+        'erfaring': { en: 'experience', example: 'Hun har mange års erfaring inden for marketing.' },
+        'fællesskab': { en: 'community', example: 'Fællesskabet i denne by er meget stærkt.' },
+        'færdighed': { en: 'skill', example: 'Sprog er en vigtig færdighed i erhvervslivet.' },
+        'forskning': { en: 'research', example: 'Forskningen viser nye resultater.' },
+        'forventning': { en: 'expectation', example: 'Der er store forventninger til den nye direktør.' },
+        'hensigt': { en: 'intention', example: 'Hensigten med dette møde er at diskutere fremtidige planer.' },
+        'indflydelse': { en: 'influence', example: 'Hans indflydelse på virksomheden har været betydelig.' },
+        'konsekvens': { en: 'consequence', example: 'En af konsekvenserne af hans handlinger var, at han mistede sit job.' },
+        'ansvar': { en: 'responsibility', example: 'Det er dit ansvar at møde op til tiden.' },
+        'betingelse': { en: 'condition', example: 'En af betingelserne for ansættelsen er relevant erfaring.' },
+        'egenskab': { en: 'characteristic', example: 'Tålmodighed er en værdifuld egenskab.' },
+        'formål': { en: 'purpose', example: 'Formålet med projektet er at reducere CO₂-udledningen.' },
+        'frihed': { en: 'freedom', example: 'Frihed er en grundlæggende menneskerettighed.' },
+        'grundlag': { en: 'basis', example: 'Beslutningen blev taget på et solidt grundlag.' },
+        'indsats': { en: 'effort', example: 'Hun lagde en stor indsats i arbejdet.' },
+        'nødvendighed': { en: 'necessity', example: 'Vand er en biologisk nødvendighed.' },
+        'oplevelse': { en: 'experience (event)', example: 'Det var en uforglemmelig oplevelse.' },
+        'tilstand': { en: 'condition', example: 'Patientens tilstand er stabil.' },
+        'aftale': { en: 'agreement', example: 'Vi indgik en aftale om samarbejde.' },
+        'ansættelse': { en: 'employment', example: 'Hans ansættelse startede i januar.' },
+        'forhandling': { en: 'negotiation', example: 'Forhandlingerne var vanskelige.' },
+        'konkurrence': { en: 'competition', example: 'Konkurrencen på markedet er hård.' },
+        'løsningsforslag': { en: 'solution proposal', example: 'Vi præsenterede et nyt løsningsforslag.' },
+        'mål': { en: 'goal', example: 'Mit mål er at lære dansk flydende.' },
+        'præstation': { en: 'performance', example: 'Hun leverede en imponerende præstation.' },
+        'projekt': { en: 'project', example: 'Projektet blev afsluttet til tiden.' },
+        'strategi': { en: 'strategy', example: 'Virksomheden har en klar strategi for vækst.' },
+        'udfordring': { en: 'challenge', example: 'Det var en stor udfordring at gennemføre opgaven.' },
+        'adfærd': { en: 'behavior', example: 'Hans adfærd var uacceptabel.' },
+        'fælles': { en: 'common', example: 'Vi har et fælles mål.' },
+        'indtryk': { en: 'impression', example: 'Hun gjorde et godt indtryk ved samtalen.' },
+        'kulturarv': { en: 'cultural heritage', example: 'Vi skal beskytte vores kulturarv.' },
+        'medborger': { en: 'fellow citizen', example: 'Som medborger har du ansvar for at stemme.' },
+        'menneskerettigheder': { en: 'human rights', example: 'Menneskerettighederne skal respekteres af alle.' },
+        'sammenhæng': { en: 'context', example: 'I denne sammenhæng giver det mening.' },
+        'samarbejde': { en: 'collaboration', example: 'Projektet kræver samarbejde mellem flere afdelinger.' },
+        'samfund': { en: 'society', example: 'Et velfungerende samfund bygger på tillid.' },
+        'tolerance': { en: 'tolerance', example: 'Tolerance er vigtigt i et multikulturelt samfund.' }
+    },
+    adjectives: {
+        'betydelig': { en: 'significant', example: 'Der var en betydelig stigning i salget.' },
+        'dygtig': { en: 'skilled', example: 'Han er en dygtig håndværker.' },
+        'grundig': { en: 'thorough', example: 'Hun lavede en grundig analyse.' },
+        'kompliceret': { en: 'complicated', example: 'Opgaven er mere kompliceret end forventet.' },
+        'nøjagtig': { en: 'precise', example: 'Han gav en nøjagtig beskrivelse af hændelsen.' },
+        'opmærksom': { en: 'attentive', example: 'Hun var opmærksom på detaljerne.' },
+        'overbevisende': { en: 'convincing', example: 'Argumentet var overbevisende.' },
+        'selvstændig': { en: 'independent', example: 'Hun er meget selvstændig og kan arbejde uden opsyn.' },
+        'særlig': { en: 'special', example: 'Det er en særlig begivenhed.' },
+        'troværdig': { en: 'reliable', example: 'Han er en troværdig kilde.' }
+    },
+    other: {
+        'følgelig': { en: 'consequently', example: 'Jeg var syg, følgelig blev jeg hjemme.' },
+        'udelukkende': { en: 'exclusively', example: 'Dette gælder udelukkende for studerende.' },
+        'ganske vist': { en: 'admittedly', example: 'Ganske vist er det dyrt, men det er godt.' },
+        'i den forbindelse': { en: 'in that connection', example: 'I den forbindelse er det vigtigt at nævne...' }
+    }
+}
+,
+C2: {
+    nouns: { 
+        'paradigmeskift': { et: 'paradigm shift', example: 'Et paradigmeskift ændrede videnskaben.' }, 
+        'diskurs': { en: 'discourse', example: 'Den politiske diskurs er skarp.' }, 
+        'suverænitet': { en: 'sovereignty', example: 'Danmark har fuld suverænitet.' }, 
+        'metafysik': { en: 'metaphysics', example: 'Metafysik er et komplekst emne.' }, 
+        'epistemologi': { en: 'epistemology', example: 'Epistemologi studerer viden.' }, 
+        'udfordring': { en: 'challenge', example: 'Livet er fuld af udfordringer.' },
+        'forståelse': { en: 'understanding', example: 'Hans forståelse af emnet er dyb.' },
+        'forventning': { en: 'expectation', example: 'Mine forventninger var høje.' },
+        'indflydelse': { en: 'influence', example: 'Hun har stor indflydelse i branchen.' },
+        'strategi': { en: 'strategy', example: 'Vi skal udvikle en ny strategi.' },
+        'forpligtelse': { en: 'commitment', example: 'Jeg har en forpligtelse til mit arbejde.' },
+        'perspektiv': { en: 'perspective', example: 'Vi skal overveje forskellige perspektiver.' },
+        'vurdering': { en: 'assessment', example: 'Vi skal foretage en vurdering af situationen.' },
+        'tilpasning': { en: 'adaptation', example: 'Tilpasning til nye omgivelser kan være svær.' },
+        'indsats': { en: 'effort', example: 'Din indsats er værdsat.' },
+        'engagement': { en: 'engagement', example: 'Hans engagement i projektet er bemærkelsesværdigt.' },
+        'analyse': { en: 'analysis', example: 'Vi skal lave en grundig analyse.' },
+        'integration': { en: 'integration', example: 'Integration af nye systemer er nødvendig.' },
+        'komponent': { en: 'component', example: 'Denne komponent er vigtig for hele systemet.' },
+        'sammenhæng': { en: 'context', example: 'Vi skal forstå sammenhængen.' },
+        'forudsigelse': { en: 'prediction', example: 'Hans forudsigelse var korrekt.' },
+        'ressource': { en: 'resource', example: 'Vi skal udnytte vores ressourcer effektivt.' },
+        'egenskab': { en: 'characteristic', example: 'Dette er en vigtig egenskab.' },
+        'sikkerhed': { en: 'security', example: 'Vi skal sikre vores sikkerhed.' },
+        'kommunikation': { en: 'communication', example: 'God kommunikation er nøglen til succes.' },
+        'forhandling': { en: 'negotiation', example: 'Forhandlingerne var succesfulde.' },
+        'udvikling': { en: 'development', example: 'Vi skal fremme udvikling.' },
+        'indsigt': { en: 'insight', example: 'Hans indsigt i emnet var imponerende.' },
+        'begrundelse': { en: 'justification', example: 'Hvad er begrundelsen for denne beslutning?' }
+    },
+    verbs: { 
+        'dekonstruere': { en: 'to deconstruct', example: 'Vi skal dekonstruere argumentet.' }, 
+        'internalisere': { en: 'to internalize', example: 'Hun internaliserer kritikken.' }, 
+        'legitimere': { en: 'to legitimize', example: 'De forsøger at legitimere deres handlinger.' }, 
+        'udkrystallisere sig': { en: 'to crystallize', example: 'Problemet udkrystalliserede sig.' }, 
+        'foregribe': { en: 'to anticipate', example: 'Man kan foregribe en krise.' },
+        'anbefale': { en: 'to recommend', example: 'Jeg vil anbefale denne restaurant.' },
+        'forbedre': { en: 'to improve', example: 'Vi skal forbedre vores metoder.' },
+        'udforske': { en: 'to explore', example: 'Vi skal udforske nye muligheder.' },
+        'overvinde': { en: 'to overcome', example: 'Vi kan overvinde enhver hindring.' },
+        'overveje': { en: 'to consider', example: 'Vi skal overveje alle muligheder.' },
+        'implementere': { en: 'to implement', example: 'Vi skal implementere disse ændringer.' },
+        'gennemføre': { en: 'to carry out', example: 'Vi skal gennemføre projektet til tiden.' }
+    },
+    adjectives: { 
+        'iboende': { en: 'inherent', example: 'Der er en iboende risiko.' }, 
+        'transcendent': { en: 'transcendent', example: 'Filosofien er transcendent.' }, 
+        'allestedsnærværende': { en: 'ubiquitous', example: 'Internettet er allestedsnærværende.' }, 
+        'inkongruent': { en: 'incongruent', example: 'Dine handlinger er inkongruente med dine ord.' }, 
+        'prægnant': { en: 'concise/pithy', example: 'Han kom med et prægnant svar.' },
+        'bemærkelsesværdig': { en: 'remarkable', example: 'Det var en bemærkelsesværdig præstation.' },
+        'kompliceret': { en: 'complicated', example: 'Dette problem er meget kompliceret.' },
+        'begejstret': { en: 'excited', example: 'Jeg er meget begejstret for denne mulighed.' },
+        'kulturel': { en: 'cultural', example: 'Der er mange kulturelle forskelle mellem landene.' },
+        'motiveret': { en: 'motivated', example: 'Hun er meget motiveret for at lære.' },
+        'særegen': { en: 'unique', example: 'Dette kunstværk er særegen.' },
+        'nødvendig': { en: 'necessary', example: 'Det er nødvendigt at forstå dette koncept.' },
+        'bæredygtig': { en: 'sustainable', example: 'Vi skal udvikle bæredygtige løsninger.' },
+        'troværdig': { en: 'credible', example: 'Hans udsagn er troværdig.' },
+        'grundlæggende': { en: 'fundamental', example: 'Dette er et grundlæggende princip.' },
+        'indlysende': { en: 'obvious', example: 'Det er indlysende, at vi skal handle nu.' },
+        'effektiv': { en: 'effective', example: 'Denne metode er meget effektiv.' },
+        'uvurderlig': { en: 'invaluable', example: 'Hans råd var uvurderlig.' },
+        'forventningsfuld': { en: 'expectant', example: 'Hun var forventningsfuld før mødet.' },
+        'tilgængelig': { en: 'accessible', example: 'Informationen skal være tilgængelig for alle.' },
+        'forståelig': { en: 'understandable', example: 'Din forklaring var meget forståelig.' }
+    },
+    other: { 
+        'som følge heraf': { en: 'as a result of this', example: 'Han tabte, som følge heraf var han ked af det.' }, 
+        'ikke desto mindre': { en: 'nevertheless', example: 'Det var svært, ikke desto mindre lykkedes det.' }, 
+        'i sagens natur': { en: 'by the nature of the case', example: 'I sagens natur er det en udfordring.' }, 
+        'alt andet lige': { en: 'all other things being equal', example: 'Alt andet lige, vil prisen falde.' } 
+    }
+}
+
             };
             this.allWordsCache = null;
             this.allVerbsCache = null;
