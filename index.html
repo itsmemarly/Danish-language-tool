@@ -717,13 +717,13 @@ C2: {
                 this.uiManager.updateMentor(`Great! We're now at level <strong>${this.currentLevel}</strong>. The words have been updated.`);
             });
             
-            document.getElementById('vocab-list').addEventListener('click', (e) => {
+            document.getElementById('vocab-list').addEventListener('click', (e) => { 
                 let target = e.target;
                 if (target.tagName === 'STRONG') {
                     target = target.parentNode; // Get the <li> element
                 }
                 if (target.tagName === 'LI' && target.querySelector('strong')) {
-                    const danishWord = target.querySelector('strong').textContent.split(' ').pop().trim();
+                    const danishWord = target.querySelector('strong').textContent.trim(); // Keep full phrase
                     const exampleSentence = this.appLogic.getExampleSentence(danishWord);
                     if (exampleSentence) {
                         this.uiManager.updateMentor(`Here's an example: "<strong>${exampleSentence}</strong>"`);
@@ -732,6 +732,7 @@ C2: {
                     }
                 }
             });
+
         }
 
         updateUIForLevel() {
