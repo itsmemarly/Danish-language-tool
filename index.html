@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Danish with Egern - A1 to C2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf6e3; /* Creamy background */
+        }
+        .mentor-bubble {
+            font-family: 'Kalam', cursive;
+            background-color: #ffffff;
+            border: 2px solid #a5b4fc; /* Softer purple */
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .mentor-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50px;
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: #a5b4fc transparent transparent transparent;
+        }
+        .mentor-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 52px;
+            border-width: 17px 17px 0;
+            border-style: solid;
+            border-color: #ffffff transparent transparent transparent;
+        }
+        .cute-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .cute-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .word-bank-word {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .word-bank-word:hover {
+            background-color: #c7d2fe;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-indigo-800">Lær Dansk med Egern</h1>
+            <p class="text-lg text-gray-600 mt-2">Your complete guide to Danish fluency!</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row items-center justify-center mb-8">
+            <div class="w-40 h-40 md:w-48 md:h-48 mb-4 md:mb-0 md:mr-8 flex-shrink-0">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#D97706" d="M48.4,-57.3C61.8,-48.9,71.2,-34.5,76.5,-18.4C81.8,-2.3,83,15.4,75.5,29.9C68,44.4,51.8,55.7,35.8,63.1C19.8,70.5,3.9,74,-12.3,72.1C-28.5,70.2,-45,62.9,-57.4,50.7C-69.8,38.5,-78.1,21.4,-78.7,3.8C-79.4,-13.8,-72.4,-31.9,-60.6,-42.2C-48.9,-52.5,-32.4,-55,-18.1,-56.9C3.7,-58.7,21.5,-59.9,34.9,-62.4C48.4,-64.9,48.4,-57.3,48.4,-57.3" transform="translate(100 100)" />
+                    <circle cx="115" cy="80" r="5" fill="black" />
+                    <circle cx="135" cy="80" r="5" fill="black" />
+                    <path d="M 120 90 Q 125 100 130 90" stroke="black" fill="none" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="mentor-bubble w-full">
+                <p id="mentor-text" class="text-lg">Hej! I'm Egern. I'm ready to help you master Danish, all the way to C2. Let's begin!</p>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">Sentence Builder</h2>
+            <div class="bg-gray-100 p-4 rounded-md mb-4">
+                <h3 class="font-semibold mb-2">Word Bank:</h3>
+                <div id="word-bank" class="flex flex-wrap gap-2"></div>
+            </div>
+            <textarea id="sentence-input" class="w-full p-3 border-2 border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 transition" rows="3" placeholder="Click words from the bank or type your sentence here..."></textarea>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <button id="check-grammar-btn" class="cute-button bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700">Check My Sentence</button>
+                <button id="get-suggestion-btn" class="cute-button bg-emerald-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-600">Give Me a Suggestion</button>
+                <button id="translate-btn" class="cute-button bg-sky-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-600">Translate It</button>
+                <button id="clear-btn" class="cute-button bg-rose-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-rose-600">Clear</button>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">Vocabulary Practice</h2>
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="font-semibold">Level:</h3>
+                <select id="level-select" class="border-2 border-gray-300 rounded-md p-2">
+                    <option value="A1">A1 (Beginner)</option>
+                    <option value="A2">A2 (Elementary)</option>
+                    <option value="B1">B1 (Intermediate)</option>
+                    <option value="B2">B2 (Upper Intermediate)</option>
+                    <option value="C1">C1 (Advanced)</option>
+                    <option value="C2">C2 (Mastery)</option>
+                </select>
+            </div>
+            <ul id="vocab-list" class="list-disc list-inside space-y-2 text-gray-700 max-h-60 overflow-y-auto"></ul>
+        </div>
+    </div>
+
+    <script>
+    // --- OOP JavaScript Refactor ---
+
+    /**
+     * Manages all vocabulary data and retrieval.
+     * This approach is efficient as it loads all data once and provides
+     * quick access without repeated processing.
+     */
+    class VocabularyManager {
+        constructor() {
+            this.vocabulary = {
+                A1: {
+                    nouns: { 'pige': { en: 'girl', example: 'Pigen spiser et æble.' }, 'dreng': { en: 'boy', example: 'Drengen læser en bog.' }, 'hus': { et: 'house', example: 'Huset er stort.' }, 'bog': { en: 'book', example: 'Jeg har en bog.' }, 'æble': { et: 'apple', example: 'Æblet er rødt.' }, 'familie': { en: 'family', example: 'Min familie er glad.' }, 'ven': { en: 'friend', example: 'Han er en god ven.' }, 'skole': { en: 'school', example: 'Hun går i skole.' }, 'mad': { en: 'food', example: 'Maden er god.' }, 'vand': { et: 'water', example: 'Jeg drikker vand.' } },
+                    verbs: { 'spiser': { en: 'eat(s)', example: 'De spiser mad.' }, 'læser': { en: 'read(s)', example: 'Vi læser en bog.' }, 'ser': { en: 'see(s)', example: 'Jeg ser en bil.' }, 'har': { en: 'have/has', example: 'Hun har en stor bil.' }, 'er': { en: 'am/is/are', example: 'Vi er glade.' }, 'hedder': { en: 'am/is called', example: 'Jeg hedder Peter.' }, 'kommer': { en: 'come(s)', example: 'Han kommer fra Danmark.' }, 'bor': { en: 'live(s)', example: 'De bor i et hus.' } },
+                    adjectives: { 'stor': { en: 'big', example: 'Huset er stort.' }, 'lille': { en: 'small', example: 'Jeg ser en lille pige.' }, 'rød': { en: 'red', example: 'Æblet er rødt.' }, 'god': { en: 'good', example: 'Det er en god dag.' }, 'glad': { en: 'happy', example: 'Vi er glade.' } },
+                    other: { 'jeg': { en: 'I', example: 'Jeg er glad.' }, 'du': { en: 'you', example: 'Du spiser en kage.' }, 'han': { en: 'he', example: 'Han kommer fra København.' }, 'hun': { en: 'she', example: 'Hun er min ven.' }, 'vi': { en: 'we', example: 'Vi har en kat.' }, 'de': { en: 'they', example: 'De læser i bogen.' }, 'hvad': { en: 'what', example: 'Hvad spiser du?' }, 'hvor': { en: 'where', example: 'Hvor bor du?' }, 'og': { en: 'and', example: 'Han og hun er glade.' }, 'i': { en: 'in', example: 'Jeg bor i Danmark.' }, 'på': { en: 'on', example: 'Bogen ligger på bordet.' }, 'ikke': { en: 'not', example: 'Jeg er ikke glad.' } }
+                },
+                A2: {
+                    nouns: { 'bil': { en: 'car', example: 'Min bil er gammel.' }, 'arbejde': { et: 'work', example: 'Jeg har meget arbejde.' }, 'fritid': { en: 'leisure time', example: 'I min fritid læser jeg.' }, 'butik': { en: 'shop', example: 'Butikken er lukket.' }, 'penge': { en: 'money', example: 'Jeg har mange penge.' }, 'vejr': { et: 'weather', example: 'Vejret er koldt.' }, 'rejse': { en: 'journey', example: 'Vi tager på en rejse.' }, 'sprog': { et: 'language', example: 'Dansk er et sprog.' }, 'uge': { en: 'week', example: 'Ugen har syv dage.' } },
+                    verbs: { 'kører': { en: 'drive(s)', example: 'Han kører bil.' }, 'arbejder': { en: 'work(s)', example: 'Jeg arbejder på en butik.' }, 'besøger': { en: 'visit(s)', example: 'De besøger deres familie.' }, 'laver': { en: 'make(s)', example: 'Hun laver mad.' }, 'køber': { en: 'buy(s)', example: 'Jeg køber en ny bil.' }, 'synes': { en: 'think(s)/find(s)', example: 'Jeg synes det er smukt.' }, 'hjælper': { en: 'help(s)', example: 'Vi hjælper hinanden.' } },
+                    adjectives: { 'ny': { en: 'new', example: 'Vi har en ny bil.' }, 'gammel': { en: 'old', example: 'Bogen er gammel.' }, 'smuk': { en: 'beautiful', example: 'Det er en smuk dag.' }, 'billig': { en: 'cheap', example: 'Bilen er billig.' }, 'dyr': { en: 'expensive', example: 'Det er en dyr taske.' }, 'varm': { en: 'warm', example: 'Vejret er varmt.' }, 'kold': { en: 'cold', example: 'Vandet er koldt.' } },
+                    other: { 'fordi': { en: 'because', example: 'Jeg er glad, fordi jeg har ferie.' }, 'men': { en: 'but', example: 'Jeg er træt, men glad.' }, 'også': { en: 'also', example: 'Jeg taler også dansk.' }, 'måske': { en: 'maybe', example: 'Måske kommer han senere.' }, 'altid': { en: 'always', example: 'Han er altid glad.' }, 'aldrig': { en: 'never', example: 'Jeg spiser aldrig æbler.' }, 'nogle gange': { en: 'sometimes', example: 'Jeg løber nogle gange.' } }
+                },
+                B1: {
+                    nouns: { 'uddannelse': { en: 'education', example: 'Uddannelse er vigtig.' }, 'mulighed': { en: 'opportunity', example: 'Der er mange muligheder.' }, 'samfund': { et: 'society', example: 'Vi lever i et moderne samfund.' }, 'fremtid': { en: 'future', example: 'Fremtiden ser lys ud.' }, 'mening': { en: 'opinion', example: 'Hvad er din mening?' }, 'miljø': { et: 'environment', example: 'Vi skal beskytte miljøet.' }, 'sundhed': { en: 'health', example: 'Sundhed er vigtig for alle.' } },
+                    verbs: { 'studerer': { en: 'study/studies', example: 'Han studerer økonomi.' }, 'udvikler': { en: 'develop(s)', example: 'Teknologien udvikler sig hurtigt.' }, 'diskuterer': { en: 'discuss(es)', example: 'Vi diskuterer politik.' }, 'forklarer': { en: 'explain(s)', example: 'Læreren forklarer grammatik.' }, 'foreslår': { en: 'suggest(s)', example: 'Jeg foreslår en løsning.' }, 'beslutter': { en: 'decide(s)', example: 'Vi beslutter os for at rejse.' } },
+                    adjectives: { 'vigtig': { en: 'important', example: 'Det er en vigtig besked.' }, 'interessant': { en: 'interesting', example: 'Bogen er meget interessant.' }, 'nødvendig': { en: 'necessary', example: 'Det er nødvendigt at lære.' }, 'forskellig': { en: 'different', example: 'De har forskellige meninger.' }, 'politisk': { en: 'political', example: 'Det er en politisk diskussion.' }, 'social': { en: 'social', example: 'Hun har et stort socialt netværk.' } },
+                    other: { 'selvom': { en: 'although', example: 'Han smiler, selvom han er træt.' }, 'derfor': { en: 'therefore', example: 'Det regner, derfor bliver vi inde.' }, 'alligevel': { en: 'anyway', example: 'Det er dyrt, men jeg køber det alligevel.' }, 'desuden': { en: 'besides', example: 'Jeg er træt, desuden skal jeg tidligt op.' }, 'for eksempel': { en: 'for example', example: 'Vi spiser meget, for eksempel ost.' } }
+                },
+                B2: {
+                    nouns: { 'udfordring': { en: 'challenge', example: 'Det er en stor udfordring.' }, 'ansvar': { et: 'responsibility', example: 'Han tager sit ansvar alvorligt.' }, 'økonomi': { en: 'economy', example: 'Landets økonomi vokser.' }, 'kultur': { en: 'culture', example: 'Jeg studerer dansk kultur.' }, 'lovgivning': { en: 'legislation', example: 'Ny lovgivning er nødvendig.' }, 'forudsætning': { en: 'prerequisite', example: 'En god uddannelse er en forudsætning.' } },
+                    verbs: { 'analyserer': { en: 'analyze(s)', example: 'Vi analyserer data.' }, 'argumenterer': { en: 'argue(s)', example: 'Han argumenterer for sin mening.' }, 'bidrager': { en: 'contribute(s)', example: 'Hun bidrager til projektet.' }, 'overvejer': { en: 'consider(s)', example: 'Vi overvejer at flytte.' }, 'kritiserer': { en: 'criticize(s)', example: 'Man kritiserer regeringens politik.' }, 'konkluderer': { en: 'conclude(s)', example: 'Jeg konkluderer, at det er sandt.' } },
+                    adjectives: { 'kompleks': { en: 'complex', example: 'Problemet er meget komplekst.' }, 'bæredygtig': { en: 'sustainable', example: 'Vi skal tænke bæredygtigt.' }, 'global': { en: 'global', example: 'Vi står over for globale problemer.' }, 'relevant': { en: 'relevant', example: 'Det er en relevant diskussion.' }, 'effektiv': { en: 'effective', example: 'Løsningen er effektiv.' }, 'kontroversiel': { en: 'controversial', example: 'Emnet er kontroversielt.' } },
+                    other: { 'imidlertid': { en: 'however', example: 'Jeg var træt, imidlertid fortsatte jeg.' }, 'derimod': { en: 'on the other hand', example: 'Han er rolig, derimod er hun nervøs.' }, 'yderligere': { en: 'furthermore', example: 'Yderligere skal vi overveje prisen.' }, 'i modsætning til': { en: 'in contrast to', example: 'I modsætning til mig, er hun meget glad.' }, 'på grund af': { en: 'because of', example: 'Han kom for sent på grund af trafik.' } }
+                },
+                C1: {
+                    nouns: { 'bevidsthed': { en: 'consciousness', example: 'Vi har en kollektiv bevidsthed.' }, 'retfærdighed': { en: 'justice', example: 'Hun kæmper for retfærdighed.' }, 'velstand': { en: 'prosperity', example: 'Velstand er vigtig for alle.' }, 'arv': { en: 'heritage', example: 'Det er en del af vores kulturarv.' }, 'tendens': { en: 'tendency', example: 'Der er en tendens til at spare.' }, 'forhandling': { en: 'negotiation', example: 'Forhandlingerne var vanskelige.' } },
+                    verbs: { 'tilegne sig': { en: 'to acquire', example: 'Man tilegner sig viden.' }, 'formidle': { en: 'to convey/mediate', example: 'Han formidler et budskab.' }, 'nuancere': { en: 'to nuance', example: 'Det er vigtigt at nuancere debatten.' }, 'bestride': { en: 'to contest/dispute', example: 'Han bestrider anklagen.' }, 'anskue': { en: 'to view/perceive', example: 'Vi må anskue problemet fra flere sider.' } },
+                    adjectives: { 'tvetydig': { en: 'ambiguous', example: 'Svaret var tvetydigt.' }, 'banebrydende': { en: 'groundbreaking', example: 'Det er en banebrydende opdagelse.' }, 'omfattende': { en: 'comprehensive', example: 'Han har en omfattende viden.' }, 'uundgåelig': { en: 'unavoidable', example: 'Det var en uundgåelig konsekvens.' }, 'autentisk': { en: 'authentic', example: 'Hun virker meget autentisk.' } },
+                    other: { 'følgelig': { en: 'consequently', example: 'Jeg var syg, følgelig blev jeg hjemme.' }, 'udelukkende': { en: 'exclusively', example: 'Dette gælder udelukkende for studerende.' }, 'ganske vist': { en: 'admittedly', example: 'Ganske vist er det dyrt, men det er godt.' }, 'i den forbindelse': { en: 'in that connection', example: 'I den forbindelse er det vigtigt at nævne...' } }
+                },
+                C2: {
+                    nouns: { 'paradigmeskift': { et: 'paradigm shift', example: 'Et paradigmeskift ændrede videnskaben.' }, 'diskurs': { en: 'discourse', example: 'Den politiske diskurs er skarp.' }, 'suverænitet': { en: 'sovereignty', example: 'Danmark har fuld suverænitet.' }, 'metafysik': { en: 'metaphysics', example: 'Metafysik er et komplekst emne.' }, 'epistemologi': { en: 'epistemology', example: 'Epistemologi studerer viden.' } },
+                    verbs: { 'dekonstruere': { en: 'to deconstruct', example: 'Vi skal dekonstruere argumentet.' }, 'internalisere': { en: 'to internalize', example: 'Hun internaliserer kritikken.' }, 'legitimere': { en: 'to legitimize', example: 'De forsøger at legitimere deres handlinger.' }, 'udkrystallisere sig': { en: 'to crystallize', example: 'Problemet udkrystalliserede sig.' }, 'foregribe': { en: 'to anticipate', example: 'Man kan foregribe en krise.' } },
+                    adjectives: { 'iboende': { en: 'inherent', example: 'Der er en iboende risiko.' }, 'transcendent': { en: 'transcendent', example: 'Filosofien er transcendent.' }, 'allestedsnærværende': { en: 'ubiquitous', example: 'Internettet er allestedsnærværende.' }, 'inkongruent': { en: 'incongruent', example: 'Dine handlinger er inkongruente med dine ord.' }, 'prægnant': { en: 'concise/pithy', example: 'Han kom med et prægnant svar.' } },
+                    other: { 'som følge heraf': { en: 'as a result of this', example: 'Han tabte, som følge heraf var han ked af det.' }, 'ikke desto mindre': { en: 'nevertheless', example: 'Det var svært, ikke desto mindre lykkedes det.' }, 'i sagens natur': { en: 'by the nature of the case', example: 'I sagens natur er det en udfordring.' }, 'alt andet lige': { en: 'all other things being equal', example: 'Alt andet lige, vil prisen falde.' } }
+                }
+            };
+            this.allWordsCache = null;
+            this.allVerbsCache = null;
+        }
+
+        getWordsForLevel(level) {
+            const levelVocab = this.vocabulary[level] || {};
+            const combined = {};
+            for (const category of Object.values(levelVocab)) {
+                for (const word in category) {
+                    combined[word] = category[word];
+                }
+            }
+            return combined;
+        }
+        
+        getNounsForLevel(level) {
+             const levelVocab = this.vocabulary[level] || {};
+             return levelVocab.nouns || {};
+        }
+
+        getVerbsForLevel(level) {
+            const levelVocab = this.vocabulary[level] || {};
+            return levelVocab.verbs || {};
+        }
+
+        getAdjectivesForLevel(level) {
+            const levelVocab = this.vocabulary[level] || {};
+            return levelVocab.adjectives || {};
+        }
+
+        getAllWords() {
+            if (!this.allWordsCache) {
+                this.allWordsCache = Object.values(this.vocabulary).reduce((acc, level) => {
+                    for (const category of Object.values(level)) {
+                        for (const word in category) {
+                            acc[word] = category[word];
+                        }
+                    }
+                    return acc;
+                }, {});
+                this.allWordsCache['en'] = { en: 'a/an', example: null };
+                this.allWordsCache['et'] = { en: 'a/an', example: null };
+            }
+            return this.allWordsCache;
+        }
+
+        getAllVerbs() {
+            if (!this.allVerbsCache) {
+                this.allVerbsCache = Object.values(this.vocabulary).reduce((acc, level) => {
+                    return {...acc, ...(level.verbs || {})};
+                }, {});
+            }
+            return this.allVerbsCache;
+        }
+    }
+
+    /**
+     * Manages all UI updates and interactions.
+     * Encapsulating DOM manipulation makes the code cleaner and separates
+     * logic from presentation, which is a core OOP principle.
+     */
+    class UIManager {
+        constructor() {
+            this.mentorTextEl = document.getElementById('mentor-text');
+            this.wordBankEl = document.getElementById('word-bank');
+            this.vocabListEl = document.getElementById('vocab-list');
+            this.sentenceInputEl = document.getElementById('sentence-input');
+        }
+
+        updateMentor(text) {
+            this.mentorTextEl.innerHTML = text;
+        }
+
+        populateWordBank(words, onWordClick) {
+            this.wordBankEl.innerHTML = '';
+            const wordKeys = Object.keys(words);
+            const sampleSize = Math.min(30, wordKeys.length);
+            const randomWords = wordKeys.sort(() => 0.5 - Math.random()).slice(0, sampleSize);
+
+            for (const word of randomWords) {
+                const wordEl = document.createElement('span');
+                wordEl.textContent = word;
+                wordEl.className = 'word-bank-word bg-gray-200 text-gray-800 py-1 px-3 rounded-full';
+                wordEl.onclick = () => onWordClick(word);
+                this.wordBankEl.appendChild(wordEl);
+            }
+        }
+
+        populateVocabList(words) {
+            this.vocabListEl.innerHTML = '';
+            for (const danish in words) {
+                const data = words[danish];
+                const li = document.createElement('li');
+                li.classList.add('cursor-pointer');
+                const article = data.en && !data.et ? 'en ' : (data.et && !data.en ? 'et ' : '');
+                const englishTranslation = data.en || data.et || 'translation not found'; // Fallback
+                const displayWord = article ? `${article}<strong>${danish}</strong>` : `<strong>${danish}</strong>`;
+                li.innerHTML = `${displayWord} - ${englishTranslation}`;
+                this.vocabListEl.appendChild(li);
+            }
+        }
+        
+        addWordToSentence(word) {
+            this.sentenceInputEl.value += (this.sentenceInputEl.value ? ' ' : '') + word;
+            this.sentenceInputEl.focus();
+        }
+
+        getSentence() {
+            return this.sentenceInputEl.value.trim();
+        }
+
+        clearSentence() {
+            this.sentenceInputEl.value = '';
+        }
+    }
+
+    /**
+     * Contains the core application logic for checking grammar,
+     * providing suggestions, and translating.
+     */
+    class AppLogic {
+        constructor(vocabManager, uiManager) {
+            this.vocabManager = vocabManager;
+            this.uiManager = uiManager;
+        }
+
+        checkGrammar() {
+            const sentence = this.uiManager.getSentence().toLowerCase();
+            if (!sentence) {
+                this.uiManager.updateMentor("You haven't written anything yet! Try building a sentence.");
+                return;
+            }
+
+            const words = sentence.split(' ');
+            const allVerbs = this.vocabManager.getAllVerbs();
+            
+            // This is a simplified grammar check focusing on verb placement (V2 rule).
+            let verbIndex = words.findIndex(word => Object.keys(allVerbs).includes(word));
+
+            if (verbIndex === 1) {
+                this.uiManager.updateMentor("<strong>Godt arbejde!</strong> (Good work!) The verb is in the right place for a simple statement. Keep practicing!");
+            } else if (verbIndex > 1) {
+                this.uiManager.updateMentor("Good try! In Danish, if you start with something other than the subject (like a time or place), the verb still comes second, followed by the subject. This is called <strong>inversion</strong>.");
+            } else if (verbIndex === 0) {
+                this.uiManager.updateMentor("It looks like you started with a verb. That's how you make a <strong>question</strong> in Danish! If you want to make a statement, the subject usually comes first.");
+            } else {
+                this.uiManager.updateMentor("I don't see a verb from our vocabulary lists. Make sure to include a verb! Verbs are action words like '<strong>spiser</strong>' (eats).");
+            }
+        }
+
+        getSuggestion(level) {
+            const nouns = Object.keys(this.vocabManager.getNounsForLevel(level));
+            const verbs = Object.keys(this.vocabManager.getVerbsForLevel(level));
+            const adjectives = Object.keys(this.vocabManager.getAdjectivesForLevel(level));
+
+            if (nouns.length === 0 || verbs.length === 0 || adjectives.length === 0) {
+                this.uiManager.updateMentor("Let's try a different level for suggestions!");
+                return;
+            }
+
+            const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+            const randomVerb = verbs[Math.floor(Math.random() * verbs.length)];
+            const randomAdj = adjectives[Math.floor(Math.random() * adjectives.length)];
+            
+            const nounData = this.vocabManager.getAllWords()[randomNoun];
+            const verbData = this.vocabManager.getAllWords()[randomVerb];
+            const adjData = this.vocabManager.getAllWords()[randomAdj];
+            
+            // Check for both 'en' and 'et' for translation
+            const article = nounData.en ? 'en' : 'et';
+            const translationNoun = nounData.en || nounData.et;
+            const translationAdj = adjData.en || adjData.et;
+            
+            const suggestion = `jeg ${randomVerb} ${article} ${randomAdj} ${randomNoun}`;
+            const translation = `(I ${verbData.en} a/an ${translationAdj} ${translationNoun})`;
+
+            this.uiManager.updateMentor(`Here's an idea: "<strong>${suggestion}</strong>". ${translation}. Try to make your own version!`);
+        }
+
+        translateSentence() {
+            const sentence = this.uiManager.getSentence();
+            if (!sentence) {
+                this.uiManager.updateMentor("Please type a sentence first, and I'll try my best to translate it for you!");
+                return;
+            }
+
+            const words = sentence.split(' ');
+            const allVocab = this.vocabManager.getAllWords();
+            const translatedParts = words.map(word => allVocab[word.toLowerCase()] ? (allVocab[word.toLowerCase()].en || allVocab[word.toLowerCase()].et) : `[${word}]`);
+            
+            const translation = translatedParts.join(' ');
+            this.uiManager.updateMentor(`Here's a literal, word-for-word translation: "<strong>${translation}</strong>". Remember, real translation is often more complex!`);
+        }
+
+        getExampleSentence(word) {
+            const allVocab = this.vocabManager.getAllWords();
+            const data = allVocab[word];
+            if (data && data.example) {
+                return data.example;
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Main application class. It initializes all components and
+     * wires up the event listeners, starting the application.
+     */
+    class DanishLearningApp {
+        constructor() {
+            this.vocabManager = new VocabularyManager();
+            this.uiManager = new UIManager();
+            this.appLogic = new AppLogic(this.vocabManager, this.uiManager);
+            this.currentLevel = 'A1';
+            this.levelSelectEl = document.getElementById('level-select');
+        }
+
+        init() {
+            this.setupEventListeners();
+            this.updateUIForLevel();
+        }
+
+        setupEventListeners() {
+            document.getElementById('check-grammar-btn').addEventListener('click', () => this.appLogic.checkGrammar());
+            document.getElementById('get-suggestion-btn').addEventListener('click', () => this.appLogic.getSuggestion(this.currentLevel));
+            document.getElementById('translate-btn').addEventListener('click', () => this.appLogic.translateSentence());
+            
+            document.getElementById('clear-btn').addEventListener('click', () => {
+                this.uiManager.clearSentence();
+                this.uiManager.updateMentor("The board is clear! Let's build a new sentence.");
+            });
+
+            this.levelSelectEl.addEventListener('change', (e) => {
+                this.currentLevel = e.target.value;
+                this.updateUIForLevel();
+                this.uiManager.updateMentor(`Great! We're now at level <strong>${this.currentLevel}</strong>. The words have been updated.`);
+            });
+            
+            document.getElementById('vocab-list').addEventListener('click', (e) => {
+                let target = e.target;
+                if (target.tagName === 'STRONG') {
+                    target = target.parentNode; // Get the <li> element
+                }
+                if (target.tagName === 'LI' && target.querySelector('strong')) {
+                    const danishWord = target.querySelector('strong').textContent.split(' ').pop().trim();
+                    const exampleSentence = this.appLogic.getExampleSentence(danishWord);
+                    if (exampleSentence) {
+                         this.uiManager.updateMentor(`Here's an example: "<strong>${exampleSentence}</strong>"`);
+                    } else {
+                         this.uiManager.updateMentor(`Sorry, I don't have an example sentence for that word just yet!`);
+                    }
+                }
+            });
+        }
+
+        updateUIForLevel() {
+            const wordsForLevel = this.vocabManager.getWordsForLevel(this.currentLevel);
+            this.uiManager.populateVocabList(wordsForLevel);
+            this.uiManager.populateWordBank(wordsForLevel, (word) => {
+                this.uiManager.addWordToSentence(word);
+            });
+        }
+    }
+
+    // --- Application Start ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const app = new DanishLearningApp();
+        app.init();
+    });
+
+    </script>
+</body>
+</html>
