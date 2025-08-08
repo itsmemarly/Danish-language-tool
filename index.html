@@ -174,8 +174,8 @@
         }
         
         getNounsForLevel(level) {
-             const levelVocab = this.vocabulary[level] || {};
-             return levelVocab.nouns || {};
+            const levelVocab = this.vocabulary[level] || {};
+            return levelVocab.nouns || {};
         }
 
         getVerbsForLevel(level) {
@@ -246,17 +246,32 @@
             }
         }
 
-        populateVocabList(words) {
+        populateVocabList(levelVocab) {
             this.vocabListEl.innerHTML = '';
-            for (const danish in words) {
-                const data = words[danish];
-                const li = document.createElement('li');
-                li.classList.add('cursor-pointer');
-                const article = data.en && !data.et ? 'en ' : (data.et && !data.en ? 'et ' : '');
-                const englishTranslation = data.en || data.et || 'translation not found'; // Fallback
-                const displayWord = article ? `${article}<strong>${danish}</strong>` : `<strong>${danish}</strong>`;
-                li.innerHTML = `${displayWord} - ${englishTranslation}`;
-                this.vocabListEl.appendChild(li);
+            
+            // Loop through the vocabulary for the specified level
+            for (const category in levelVocab) {
+                for (const danish in levelVocab[category]) {
+                    const data = levelVocab[category][danish];
+                    const li = document.createElement('li');
+                    li.classList.add('cursor-pointer');
+                    
+                    let displayWord = `<strong>${danish}</strong>`;
+
+                    // The correct check: is this word in the 'nouns' category?
+                    const isNoun = (category === 'nouns');
+                    
+                    if (isNoun) {
+                        // Check for the specific article key ('en' or 'et')
+                        const article = data.hasOwnProperty('en') ? 'en ' : 'et ';
+                        displayWord = `${article}<strong>${danish}</strong>`;
+                    }
+
+                    const englishTranslation = data.en || data.et || data.example || 'translation not found';
+                    
+                    li.innerHTML = `${displayWord} - ${englishTranslation}`;
+                    this.vocabListEl.appendChild(li);
+                }
             }
         }
         
@@ -405,9 +420,9 @@
                     const danishWord = target.querySelector('strong').textContent.split(' ').pop().trim();
                     const exampleSentence = this.appLogic.getExampleSentence(danishWord);
                     if (exampleSentence) {
-                         this.uiManager.updateMentor(`Here's an example: "<strong>${exampleSentence}</strong>"`);
+                        this.uiManager.updateMentor(`Here's an example: "<strong>${exampleSentence}</strong>"`);
                     } else {
-                         this.uiManager.updateMentor(`Sorry, I don't have an example sentence for that word just yet!`);
+                        this.uiManager.updateMentor(`Sorry, I don't have an example sentence for that word just yet!`);
                     }
                 }
             });
@@ -415,7 +430,8 @@
 
         updateUIForLevel() {
             const wordsForLevel = this.vocabManager.getWordsForLevel(this.currentLevel);
-            this.uiManager.populateVocabList(wordsForLevel);
+            const levelVocab = this.vocabManager.vocabulary[this.currentLevel];
+            this.uiManager.populateVocabList(levelVocab);
             this.uiManager.populateWordBank(wordsForLevel, (word) => {
                 this.uiManager.addWordToSentence(word);
             });
