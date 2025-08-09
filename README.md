@@ -12,7 +12,7 @@ A web-based tool for learning Danish, designed to help users practice vocabulary
 
 ## Screenshot
 
-![A screenshot of a Danish language learning web application showing a sentence builder, a word bank, and a vocabulary list with an animated squirrel mascot.](image.png)
+![A screenshot of a Danish language learning web application showing a sentence builder, a word bank, and a vocabulary list with an animated squirrel mascot.](image-2.png)
 
 ## How to Use
 

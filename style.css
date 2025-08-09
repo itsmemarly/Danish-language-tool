@@ -1,0 +1,46 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fdf6e3; /* Creamy background */
+}
+.mentor-bubble {
+    font-family: 'Kalam', cursive;
+    background-color: #ffffff;
+    border: 2px solid #a5b4fc; /* Softer purple */
+    border-radius: 20px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.mentor-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50px;
+    border-width: 20px 20px 0;
+    border-style: solid;
+    border-color: #a5b4fc transparent transparent transparent;
+}
+.mentor-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 52px;
+    border-width: 17px 17px 0;
+    border-style: solid;
+    border-color: #ffffff transparent transparent transparent;
+}
+.cute-button {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.cute-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.word-bank-word {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.word-bank-word:hover {
+    background-color: #c7d2fe;
+}
